@@ -14,14 +14,14 @@ export default function Form() {
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className="w-2/4 h-fit m-auto flex flex-col gap-4 p-5 border-2 border-zinc-400 rounded">
+			className="w-full sm:w-2/4 h-1/2 sm:h-96 flex flex-col gap-2 sm:gap-4 p-4 border-2 border-zinc-400 rounded">
 			<Section
 				label={{ children: 'Name', rest: { htmlFor: 'name' } }}
-				input={{ rest: { type: 'text', id: 'name', name: 'name', required: true } }}
+				input={{ rest: { type: 'text', id: 'name', name: 'name', autoComplete: 'name', required: true } }}
 			/>
 			<Section
 				label={{ children: 'Email', rest: { htmlFor: 'email' } }}
-				input={{ rest: { type: 'email', id: 'email', name: 'email', required: true } }}
+				input={{ rest: { type: 'email', id: 'email', name: 'email', autoComplete: 'email', required: true } }}
 			/>
 			<Section
 				label={{ children: 'Profile Image', rest: { htmlFor: 'profileImage' } }}

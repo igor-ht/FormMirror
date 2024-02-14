@@ -8,10 +8,11 @@ export default function User() {
 	const { dirtyFields, watch } = useContext(FormContext);
 
 	return (
-		<div className="w-2/4 h-fit m-auto flex flex-col flex-1 gap-4 p-5 border-2 border-zinc-400 rounded">
-			<div className="w-auto h-fit flex items-center justify-center rounded-full">
+		<div className="w-full sm:w-2/4 h-1/2 sm:h-96 flex flex-col gap-2 sm:gap-4 p-4 border-2 border-zinc-400 rounded justify-evenly items-start">
+			<div className="w-40 h-40 self-center flex items-center justify-center border-2 border-stone-400 rounded-full bg-white overflow-hidden">
 				{dirtyFields?.profileImage && (
 					<Image
+						className="object-cover w-full h-full"
 						src={URL.createObjectURL(watch('profileImage')[0])}
 						alt="profile image"
 						width={200}
@@ -20,9 +21,15 @@ export default function User() {
 					/>
 				)}
 			</div>
-			<div className="flex flex-col gap-3 items-center justify-center font-sans text-lg">
-				{dirtyFields?.name && <p>{watch('name')}</p>}
-				{dirtyFields?.email && <p>{watch('email')}</p>}
+			<div className="flex flex-col gap-4 mt-4">
+				<span className="flex flex-row gap-2 items-center">
+					<b className="w-16 font-sans font-medium text-xl ml-1">Name:</b>
+					<p className="font-sans text-lg indent-1">{watch('name')}</p>
+				</span>
+				<span className="flex flex-row gap-2 items-center">
+					<p className="w-16 font-sans font-medium text-xl ml-1">Email:</p>
+					<p className="font-sans text-lg indent-1">{watch('email')}</p>
+				</span>
 			</div>
 		</div>
 	);
