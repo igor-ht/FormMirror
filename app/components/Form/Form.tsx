@@ -7,8 +7,15 @@ import { FormContext } from '../ContextProvider';
 export default function Form() {
 	const { handleSubmit } = useContext(FormContext);
 
-	const onSubmit = (data: { name: string; email: string; profileImage: string }) => {
-		console.log(data);
+	const onSubmit = async (data: { name: string; email: string; profileImage: string }) => {
+		const formData = new FormData();
+		formData.set('name', data.name);
+		formData.set('email', data.email);
+		formData.set('profileImage', data.profileImage[0]);
+
+		const response = await fetch('/api/upload', { method: 'POST', body: formData });
+		const result = await response.json();
+		console.log(result);
 	};
 
 	const fileOnDrop = (e: DragEvent<HTMLInputElement>) => {
