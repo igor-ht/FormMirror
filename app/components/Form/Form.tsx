@@ -3,6 +3,7 @@
 import Section from './Section';
 import { DragEvent, useContext } from 'react';
 import { FormContext } from '../ContextProvider';
+import { uploadUser } from '@/utils/actions';
 
 export default function Form() {
 	const { handleSubmit } = useContext(FormContext);
@@ -28,7 +29,8 @@ export default function Form() {
 
 	return (
 		<form
-			onSubmit={handleSubmit(onSubmit)}
+			// onSubmit={handleSubmit(onSubmit)}
+			action={uploadUser}
 			className="w-full sm:w-2/4 h-1/2 sm:h-96 flex flex-col gap-2 sm:gap-4 p-4 border-2 border-zinc-400 rounded">
 			<Section
 				label={{ children: 'Name', rest: { htmlFor: 'name' } }}
